@@ -1,65 +1,93 @@
 "use strict";
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// src/scripts/default-index.ts
-var default_index_exports = {};
-__export(default_index_exports, {
-  Prisma: () => Prisma,
-  PrismaClient: () => PrismaClient,
-  default: () => default_index_default
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
-module.exports = __toCommonJS(default_index_exports);
-
-// ../../node_modules/.pnpm/@prisma+engines-version@5.19.1-2.69d742ee20b815d88e17e54db4a2a7a3b30324e3/node_modules/@prisma/engines-version/package.json
-var prisma = {
-  enginesVersion: "69d742ee20b815d88e17e54db4a2a7a3b30324e3"
-};
-
-// package.json
-var version = "5.19.1";
-
-// src/runtime/utils/clientVersion.ts
-var clientVersion = version;
-
-// src/scripts/default-index.ts
-var PrismaClient = class {
-  constructor() {
-    throw new Error('@prisma/client did not initialize yet. Please run "prisma generate" and try to import it again.');
+exports.createConfigItem = createConfigItem;
+exports.createConfigItemAsync = createConfigItemAsync;
+exports.createConfigItemSync = createConfigItemSync;
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function () {
+    return _full.default;
   }
-};
-function defineExtension(ext) {
-  if (typeof ext === "function") {
-    return ext;
-  }
-  return (client) => client.$extends(ext);
-}
-function getExtensionContext(that) {
-  return that;
-}
-var Prisma = {
-  defineExtension,
-  getExtensionContext,
-  prismaVersion: { client: clientVersion, engine: prisma.enginesVersion }
-};
-var default_index_default = { Prisma };
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  Prisma,
-  PrismaClient
 });
+exports.loadOptions = loadOptions;
+exports.loadOptionsAsync = loadOptionsAsync;
+exports.loadOptionsSync = loadOptionsSync;
+exports.loadPartialConfig = loadPartialConfig;
+exports.loadPartialConfigAsync = loadPartialConfigAsync;
+exports.loadPartialConfigSync = loadPartialConfigSync;
+function _gensync() {
+  const data = require("gensync");
+  _gensync = function () {
+    return data;
+  };
+  return data;
+}
+var _full = require("./full.js");
+var _partial = require("./partial.js");
+var _item = require("./item.js");
+var _rewriteStackTrace = require("../errors/rewrite-stack-trace.js");
+const loadPartialConfigRunner = _gensync()(_partial.loadPartialConfig);
+function loadPartialConfigAsync(...args) {
+  return (0, _rewriteStackTrace.beginHiddenCallStack)(loadPartialConfigRunner.async)(...args);
+}
+function loadPartialConfigSync(...args) {
+  return (0, _rewriteStackTrace.beginHiddenCallStack)(loadPartialConfigRunner.sync)(...args);
+}
+function loadPartialConfig(opts, callback) {
+  if (callback !== undefined) {
+    (0, _rewriteStackTrace.beginHiddenCallStack)(loadPartialConfigRunner.errback)(opts, callback);
+  } else if (typeof opts === "function") {
+    (0, _rewriteStackTrace.beginHiddenCallStack)(loadPartialConfigRunner.errback)(undefined, opts);
+  } else {
+    {
+      return loadPartialConfigSync(opts);
+    }
+  }
+}
+function* loadOptionsImpl(opts) {
+  var _config$options;
+  const config = yield* (0, _full.default)(opts);
+  return (_config$options = config == null ? void 0 : config.options) != null ? _config$options : null;
+}
+const loadOptionsRunner = _gensync()(loadOptionsImpl);
+function loadOptionsAsync(...args) {
+  return (0, _rewriteStackTrace.beginHiddenCallStack)(loadOptionsRunner.async)(...args);
+}
+function loadOptionsSync(...args) {
+  return (0, _rewriteStackTrace.beginHiddenCallStack)(loadOptionsRunner.sync)(...args);
+}
+function loadOptions(opts, callback) {
+  if (callback !== undefined) {
+    (0, _rewriteStackTrace.beginHiddenCallStack)(loadOptionsRunner.errback)(opts, callback);
+  } else if (typeof opts === "function") {
+    (0, _rewriteStackTrace.beginHiddenCallStack)(loadOptionsRunner.errback)(undefined, opts);
+  } else {
+    {
+      return loadOptionsSync(opts);
+    }
+  }
+}
+const createConfigItemRunner = _gensync()(_item.createConfigItem);
+function createConfigItemAsync(...args) {
+  return (0, _rewriteStackTrace.beginHiddenCallStack)(createConfigItemRunner.async)(...args);
+}
+function createConfigItemSync(...args) {
+  return (0, _rewriteStackTrace.beginHiddenCallStack)(createConfigItemRunner.sync)(...args);
+}
+function createConfigItem(target, options, callback) {
+  if (callback !== undefined) {
+    (0, _rewriteStackTrace.beginHiddenCallStack)(createConfigItemRunner.errback)(target, options, callback);
+  } else if (typeof options === "function") {
+    (0, _rewriteStackTrace.beginHiddenCallStack)(createConfigItemRunner.errback)(target, undefined, callback);
+  } else {
+    {
+      return createConfigItemSync(target, options);
+    }
+  }
+}
+0 && 0;
+
+//# sourceMappingURL=index.js.map
